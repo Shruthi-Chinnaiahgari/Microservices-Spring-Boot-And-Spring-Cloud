@@ -1,8 +1,6 @@
 package com.practice.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +14,7 @@ import com.practice.demo.service.StudentService;
 
 @RestController
 @RequestMapping("/api/student")
-@RefreshScope
 public class StudentController {
-	
-	@Value("${student.test}")
-	private String test;
 	
 	@Autowired
 	StudentService studentService;
@@ -33,11 +27,6 @@ public class StudentController {
 	@GetMapping("getById/{id}")
 	public StudentResponse getById (@PathVariable long id) {
 		return studentService.getById(id);
-	}
-	
-	@GetMapping("testConfigServer")
-	public String testConfigServer() {
-		return test;
 	}
 	
 }
