@@ -16,11 +16,9 @@ import com.practice.demo.service.StudentService;
 
 @RestController
 @RequestMapping("/api/student")
-@RefreshScope
 public class StudentController {
 	
-	@Value("${student.test}")
-	private String test;
+
 	
 	@Autowired
 	StudentService studentService;
@@ -35,9 +33,5 @@ public class StudentController {
 		return studentService.getById(id);
 	}
 	
-	@GetMapping("testConfigServer")
-	public String testConfigServer() {
-		return test;
-	}
 	
 }
